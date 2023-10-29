@@ -1,0 +1,9 @@
+.h1-link {
+  text-align: center;
+  margin: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  &:visited {
+    color: black;
+  }
+}

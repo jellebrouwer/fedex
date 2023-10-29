@@ -1,0 +1,43 @@
+<div class="full-name" aria-live="polite">
+  {{ fullName$ | async }}
+</div>
+<div class="form-container">
+  <form
+    [formGroup]="signUpForm"
+    (ngSubmit)="onSubmit()"
+    *ngIf="!isSubmitted && !isLoading"
+  >
+    <ng-container *ngFor="let field of inputFields">
+      <label for="{{ field.controlName }}" class="required"
+        >{{ field.label }}
+      </label>
+      <input
+        [id]="field.controlName"
+        [type]="field.type"
+        value="{{ field.controlName }}"
+        formControlName="{{ field.controlName }}"
+        required
+        attr.aria-describedby="error-{{ field.controlName }}"
+        attr.aria-invalid="{{
+          hasErrors(field.controlName) ? 'true' : 'false'
+        }}"
+      />
+      <div
+        *ngIf="hasErrors(field.controlName)"
+        class="alert alert-danger"
+        [id]="'error-' + field.controlName"
+      >
+        {{ getValidationMessage(field.controlName) }}
+      </div>
+    </ng-container>
+    <button type="submit" [disabled]="!signUpForm.valid">Sign up</button>
+    <p class="alert alert-danger" *ngIf="error">
+      Oops. Somehting went wrong.
+      <a href="/auth/sign-up">Try again.</a>
+    </p>
+  </form>
+  <ng-container *ngIf="isSubmitted">
+    <p aria-live="polite" class="alert-success">Sign up successful.</p>
+  </ng-container>
+  <ng-container *ngIf="isLoading"><fedex-loading></fedex-loading></ng-container>
+</div>

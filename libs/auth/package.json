@@ -1,0 +1,13 @@
+{
+  "name": "@fedex/auth",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@angular/forms": "^16.2.0",
+    "@angular/router": "^16.2.0",
+    "rxjs": "~7.8.0",
+    "@fedex/ui": "0.0.1"
+  },
+  "sideEffects": false
+}
